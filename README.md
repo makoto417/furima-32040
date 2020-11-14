@@ -22,7 +22,7 @@
 
 |Column           |Type       |Options           |
 |-----------------|-----------|------------------|
-|item_name        |string     |null: false       |
+|name             |string     |null: false       |
 |explanation      |text       |null: false       |
 |category_id      |integer    |null: false       |
 |status_id        |integer    |null: false       |
@@ -55,7 +55,7 @@
 |Column        |Type       |Options           |
 |--------------|-----------|------------------|
 |postcode      |string     |null: false       |
-|prefecture    |string     |null: false       |
+|prefecture_id |integer    |null: false       |
 |address_city  |string     |null: false       |
 |address_line1 |string     |null: false       |
 |address_line2 |string     |                  |
