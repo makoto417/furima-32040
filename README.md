@@ -54,7 +54,7 @@
 
 |Column        |Type       |Options           |
 |--------------|-----------|------------------|
-|postcode      |integer    |null: false       |
+|postcode      |string     |null: false       |
 |prefecture    |string     |null: false       |
 |address_city  |string     |null: false       |
 |address_line1 |string     |null: false       |
