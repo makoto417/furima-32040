@@ -6,15 +6,12 @@
 |----------------------|--------|------------|
 |nickname              |string  |null: false | 
 |email                 |string  |null: false |
-|password              |string  |null: false |
-|password_confirmation |string  |null: false |
+|encrypted_password    |string  |null: false |
 |family_name           |string  |null: false |
 |first_name            |string  |null: false |
 |family_name_kana      |string  |null: false |
 |first_name_kana       |string  |null: false |
-|born_year             |integer |null: false |
-|born_month            |integer |null: false |
-|born_day              |integer |null: false |
+|birthday              |date    |null: false |
 
 ## Association
 
@@ -23,18 +20,17 @@
 
 ## itemsテーブル
 
-|Column        |Type       |Options           |
-|--------------|-----------|------------------|
-|item_name     |string     |null: false       |
-|image         |text       |null: false       |
-|explanation   |text       |null: false       |
-|category      |string     |null: false       |
-|status        |string     |null: false       |
-|fee           |string     |null: false       |
-|prefectures   |string     |null: false       |
-|send_out_date |string     |null: false       |
-|price         |integer    |null: false       |
-|user          |references |foreign_key: true |
+|Column           |Type       |Options           |
+|-----------------|-----------|------------------|
+|item_name        |string     |null: false       |
+|explanation      |text       |null: false       |
+|category_id      |integer    |null: false       |
+|status_id        |integer    |null: false       |
+|fee_id           |integer    |null: false       |
+|prefectures_id   |integer    |null: false       |
+|send_out_date_id |integer    |null: false       |
+|price            |integer    |null: false       |
+|user             |references |foreign_key: true |
 
 ## Association
 
@@ -47,13 +43,12 @@
 |---------|-----------|------------------|
 |user     |references |foreign_key: true |
 |item     |references |foreign_key: true |
-|buy_date |datetime   |null :false       |
 
 ## Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one :address
 
 ## addressesテーブル
 
@@ -64,8 +59,9 @@
 |address_city  |string     |null: false       |
 |address_line1 |string     |null: false       |
 |address_line2 |string     |                  |
-|phone_number  |integer    |null: false       |
+|phone_number  |string     |null: false       |
+|order         |references |foreign_key: true |
 
 ## Association
 
-- has_many :orders
+- belongs_to :order
