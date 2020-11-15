@@ -4,15 +4,25 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
-  VALID_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
+  with_options presence: true do
+    validates :nickname
+    validates :family_name
+    validates :first_name
+    validates :family_name_kana
+    validates :first_name_kana
+    validates :birthday
+  end
 
-  validates :nickname, presence: true
-  validates :family_name, presence: true, format: { with: VALID_NAME_REGEX }
-  validates :first_name, presence: true, format: { with: VALID_NAME_REGEX }
-  validates :family_name_kana, presence: true, format: { with: VALID_NAME_KANA_REGEX }
-  validates :first_name_kana, presence: true, format: { with: VALID_NAME_KANA_REGEX }
-  validates :birthday, presence: true
+  with_options format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
+    validates :family_name
+    validates :first_name
+  end
+
+  with_options format: { with: /\A[ァ-ヶー－]+\z/ } do
+    validates :family_name_kana
+    validates :first_name_kana
+  end
+  
   validate :password_complexity
 
   def password_complexity
