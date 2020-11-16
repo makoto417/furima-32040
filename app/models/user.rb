@@ -24,7 +24,7 @@ class User < ApplicationRecord
     validates :family_name_kana
     validates :first_name_kana
   end
-  
+
   validate :password_complexity
 
   def password_complexity

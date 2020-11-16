@@ -60,33 +60,33 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Send out date can't be blank")
       end
-      
+
       # numericality: { other_than: 1 } のテスト
-      
+
       it 'category_idが1では保存できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it 'status_idが1では保存できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
       end
       it 'fee_idが1では保存できない' do
         @item.fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee must be other than 1")
+        expect(@item.errors.full_messages).to include('Fee must be other than 1')
       end
       it 'prefectures_idが1では保存できない' do
         @item.prefectures_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefectures must be other than 1")
+        expect(@item.errors.full_messages).to include('Prefectures must be other than 1')
       end
       it 'send_out_date_idが1では保存できない' do
         @item.send_out_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Send out date must be other than 1")
+        expect(@item.errors.full_messages).to include('Send out date must be other than 1')
       end
 
       # price のテスト
@@ -94,25 +94,25 @@ RSpec.describe Item, type: :model do
       it 'priceの値が300未満では保存できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceの値が9999999より大きいと保存できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'priceの値が半角数字のみでないと保存できない' do
-        @item.price = "１００００"
+        @item.price = '１００００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
-      
+
       # user のテスト
-      
+
       it 'ユーザーが紐付いていないと保存できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
