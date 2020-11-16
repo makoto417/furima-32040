@@ -65,3 +65,8 @@ end
 gem 'devise'
 gem 'strong_password', '~> 0.0.8'
 gem 'pry-rails'
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
+
+gem 'active_hash'

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items
+
   with_options presence: true do
     validates :nickname
     validates :family_name
@@ -22,7 +24,7 @@ class User < ApplicationRecord
     validates :family_name_kana
     validates :first_name_kana
   end
-  
+
   validate :password_complexity
 
   def password_complexity
