@@ -18,7 +18,7 @@ RSpec.describe OrderAddress, type: :model do
 
     context '購入情報が保存できないこと' do
       # presence: true のテスト
-      
+
       it 'postcodeが空だと保存できないこと' do
         @order_address.postcode = nil
         @order_address.valid?
@@ -44,46 +44,45 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_address.token = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
-      
+
       # 郵便番号のテスト
 
       it 'postcodeにハイフンがないと保存できないこと' do
         @order_address.postcode = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postcode is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postcode is invalid. Include hyphen(-)')
       end
-      
+
       # numericality: other_than: 1のテスト
-      
+
       it 'prefectures_idが1では保存できないこと' do
         @order_address.prefectures_id = 1
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Prefectures can't be blank")
       end
-      
+
       # 電話番号のテスト
-      
+
       it 'phone_numberにハイフンがあると保存できないこと' do
         @order_address.phone_number = '080-1234-5678'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is not a number")
+        expect(@order_address.errors.full_messages).to include('Phone number is not a number')
       end
       it 'phone_numberは半角数字ではないと保存できないこと' do
         @order_address.phone_number = '０８０１２３４５６７８'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is not a number")
+        expect(@order_address.errors.full_messages).to include('Phone number is not a number')
       end
       it 'phone_numberは12桁以上だと保存できないこと' do
         @order_address.phone_number = '080123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        expect(@order_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
-
     end
   end
 end
