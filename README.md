@@ -55,7 +55,7 @@
 |Column        |Type       |Options           |
 |--------------|-----------|------------------|
 |postcode      |string     |null: false       |
-|prefecture_id |integer    |null: false       |
+|prefectures_id|integer    |null: false       |
 |address_city  |string     |null: false       |
 |address_line1 |string     |null: false       |
 |address_line2 |string     |                  |
